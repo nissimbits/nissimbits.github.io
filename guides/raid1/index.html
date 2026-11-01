@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAID 1 מאפס – מדריך לווינדוס, לינוקס ומק | Nissim.Bits</title>
+<link rel="icon" type="image/webp" href="data:image/webp;base64,UklGRrAFAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSEgCAAABkGzbtmk7K3au8lSKVbTt5Bds27ZRdFJ6rxTbdmrPtm1enDXDc/deOx8QERNAqkPGrbn8Lr2qxbJaKtPeXFw1pgdJDpl74WuJFwCYmQHAW/z57CyPkFaD9/xoAMBBAqj/umOAhEGnMhhgpQCnHeuvy7MlBWCNQOJ6l5Zxz/1gzfA9GqWu45o8sH4ge1l7Re4LjWCRqD/lVBIRGQALhf9GiIKImwwWCysqJCh3JIuGdcMRRMcLAYhi+E+2t7emESwc9UtsjcsDi0fmCBue52AD8cD5ry1+NsK75h8DU2AEI77PX1qdApt68C+DMoxBct8/9rC51mYiCvkBc/DRRTS3waSaqUTnwQbjOIV8Neuda2yJWQXD1nhZNcDMADP+VMXNiy9DA2xBFV94axgep8tgDXFVWiChsIW1QECpJQP/sxYdbIN1VMKwgjQtLCH2jWmPLsqAOj63qkUL62taOKYYqmQif4jns1lvHHTWrCNEs+pgDqonEXm+mvTOQUQ72NzAeiKiAWkwBQm9/qCjxlh76a/9EmEGonv+jdZ7YQKal9M/XY/MuN39XzQqC/KQOoTsLquHNNTMI9vtT/ohC75Dbe2R44YFSQhc7EbBhkRZkIPADTcFH3LdDynwXXSTSseJOshAzaFupLb9kkxAH5A6ry0pH3HfC11ovjWEdDpWxzF0wIpe1o009zmYZAFqgEDCnp4ksO/mDzUAggFQ/W59LxLqmnrsXUEzwyY35b85MslBkp3DFp1/HFdYWlpaWhD78NyCIQ5SDVZQOCBCAwAAcBEAnQEqQABAAD49GolDoiGLhbbiEAHiWQArz9ogNfKfkZzInreoXtovMB50Hod/2u+Abyn/kfwznOD3HGAeLUtc/nPE7cYNGX/lvSL/yPuO9pvuX9gH2E/rF+q/aA9CUsVlE3ZQIdoeysPnLKV2WXnElM15lBG/u4AT32hRKxwPSgkVmFAJmxPV3ZKAmRF5MbXlAAD+9iP//th//7XY//7QZ8NDxKqkHEhw/1Qf/Se7i/xJGR7iLQtdnPT5Rb8HnkmCL7JI9IlQYSbu4LvzUP//auP/2ux//2bYznOsaiFvl/06Hfpgbz8bqAf3IARZZQ+HglWeJHgABwkrYg5Dys5aEMaAVEJsTf6u8VJyPkj/LLXMZ/zze+mCGqzOO5MuOvCUP9+xARqv/5yUwHeiQi+28nF3dmE3Fu9ngiF/2MjOcejeGaKuhCxPe11A0g37fZ7qw9LNmW6MhrIfP2JdoZXrTSayvOz6CU6ILrgGYNFS3mG/wbt8kBzVLOf0CbeA57v2s+r/p72XIIbdjHmeLyP4UKmqalbo/4Fxu/+NvBVSdRXU7ne96pt6YoVnJH+0EM/kOQqRSp1Q6k6qzVJX/EkHVHv4+NMHMtp6f+cEQW3aTxJ64mkgoy0Zf8KUuuuALuPG3LeKUqWP5RUXasPKkkPtaaumrdxNMp3PDSuHkVH3dMfRWoZ9iISO9izdksVy6uV/aOlkLjMHkZR+pzyvFwT61s+c9E4DWROrjWOnSk6mPw/BL9nsAVTkhS28dUkAqz44QtHhGmAYD2aowOsMNvAkJacgUXJuflqoyXUejZ3ZnXEVyCcvZvVovBnR1BgB5kYVsIl1Tpq3wdW6bbJHohSGaI9IjJ1CqaQo8W/e4QGLVamBVTtprswj/dJP/LCFLRt94sZkh011HmIMWCmuflP/e1HRZJOcyptohEK1pk+k2T1ib0QLEWLZ0NA5m8FCpoAm/v5UIkfS2ISywuJb1RQ9gGkFsc+8HUABG/92cAt/4xdstgT8ytzfW0+lzSYCx34LpxIt8/s3TtqGU9c9lmg1HwAHcpWdMubDPvfKD9ZH27P/P/71/zlLc8xPfFfuiPPzmv9392hwZ/XRKjkaxAAA">
+<meta name="author" content="ניסים עזר · Nissim.Bits">
+<meta name="description" content="מה זה RAID, מה צריך כדי להגדיר RAID 1, ואיך מגדירים אותו צעד אחר צעד בווינדוס, בלינוקס ובמק – כולל מה עושים כשכונן מת ו-RAID לכונן מערכת ההפעלה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --text:#1d1d22; --muted:#5d5d68; --line:#e2dfd6;
+  --accent:#3b5bfd; --accent-soft:#e6eaff;
+  --d-a:#4f7cff; --d-b:#21b07a; --d-c:#9b5cf6; --parity:#f5a524; --parity-q:#ec5b8f;
+  --disk:#2a2d3a; --disk-face:#ffffff; --dead:#a3a3ad;
+  --ok:#14995a; --ok-soft:#e3f6ec; --bad:#d6383d; --bad-soft:#fde7e8; --warn:#b26b00; --warn-soft:#fff3dc;
+  --code-bg:#16181f; --code-text:#e7e9f0; --code-muted:#8a90a2;
+  --win:#0a7cff; --lin:#e95420; --mac:#6b6b78;
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121318; --surface:#1b1d24; --surface-2:#22252e; --text:#eceef3; --muted:#a2a6b4; --line:#2e313c;
+    --accent:#8aa0ff; --accent-soft:#232a4a;
+    --disk:#3a3e4e; --disk-face:#f1f2f6; --dead:#555866;
+    --ok:#4ad08c; --ok-soft:#173326; --bad:#ff6b70; --bad-soft:#3a1d20; --warn:#ffb84d; --warn-soft:#3a2d14;
+    --code-bg:#0d0e13; --mac:#b4b4c0;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.75 "Heebo",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:"Rubik","Heebo",sans-serif;line-height:1.25;letter-spacing:-.01em}
+h2{font-size:1.75rem;margin:3.2rem 0 .8rem;scroll-margin-top:20px}
+h3{font-size:1.2rem;margin:2rem 0 .5rem}
+p{margin:.6rem 0 1rem}
+a{color:var(--accent)}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;background:var(--surface-2);padding:.1em .4em;border-radius:6px;direction:ltr;unicode-bidi:isolate}
+.path{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.84em;background:var(--accent-soft);color:var(--text);padding:.15em .5em;border-radius:6px;direction:ltr;unicode-bidi:isolate;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+strong{font-weight:700}
+
+/* hero */
+header.hero{padding:40px 0 28px;text-align:center}
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 26px;direction:ltr;text-decoration:none;color:var(--text);width:max-content}
+.brand img{width:52px;height:52px;border-radius:50%;display:block;box-shadow:0 6px 18px -8px #2a40a2}
+.brand span{font:800 1.5rem/1 "Rubik",sans-serif;letter-spacing:-.01em}
+.brand span i{font-style:normal;color:var(--accent)}
+.kicker{display:inline-block;font-size:.85rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:clamp(2rem,6vw,3rem);margin:0 0 14px;font-weight:800}
+.hero h1 .hl{background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto 10px}
+.byline{font-size:.9rem;color:var(--muted);margin:0 auto 22px}
+.byline b{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:700;padding:10px 20px;border-radius:999px;font-size:.95rem}
+.btn:hover{opacity:.88}
+
+/* toc */
+nav.toc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin:8px 0 10px}
+nav.toc b{display:block;margin-bottom:6px;font-family:"Rubik",sans-serif}
+nav.toc ol{margin:0;padding-inline-start:22px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0}
+nav.toc a{color:var(--text);text-decoration:none}
+nav.toc a:hover{color:var(--accent)}
+@media (max-width:560px){nav.toc ol{columns:1}}
+
+/* raid cards */
+.raid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;margin:20px 0}
+@media (max-width:380px){.raid-grid{grid-template-columns:1fr}}
+.raid-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;display:flex;flex-direction:column}
+.raid-card.star{border:2px solid var(--accent);box-shadow:0 6px 24px -12px var(--accent)}
+.raid-card header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.raid-card h3{margin:0;font-size:1.35rem}
+.raid-card .nick{color:var(--muted);font-weight:500;font-size:.95rem}
+.raid-card .badge-star{margin-inline-start:auto;font-size:.75rem;font-weight:700;background:var(--accent);color:#fff;padding:2px 10px;border-radius:999px}
+.raid-card p{margin:.4rem 0 .6rem;font-size:.98rem}
+.raid-svg{width:100%;height:auto;display:block;margin:6px auto 2px;direction:ltr}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.chip{font-size:.8rem;background:var(--surface-2);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.chip b{color:var(--text)}
+.sim{display:flex;align-items:center;gap:8px;min-height:30px;font-size:.88rem;margin:2px 0 6px}
+.sim .status{flex:1;color:var(--muted)}
+.sim .status.ok{color:var(--ok);font-weight:700}
+.sim .status.bad{color:var(--bad);font-weight:700}
+.sim button{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--surface-2);color:var(--text);border-radius:999px;padding:2px 12px;cursor:pointer;visibility:hidden}
+.sim button.show{visibility:visible}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:var(--muted);margin:-4px 0 8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+/* svg internals */
+.disk{cursor:pointer;outline:none}
+.disk .body{fill:var(--disk);transition:fill .3s}
+.disk:hover .body,.disk:focus-visible .body{fill:color-mix(in srgb,var(--disk) 80%,var(--accent))}
+.disk .eye,.disk .mouth{stroke:var(--disk-face);fill:none;stroke-width:2.6;stroke-linecap:round}
+.disk .eye.dot{fill:var(--disk-face);stroke:none}
+.disk .dead-face{display:none}
+.disk.dead .alive-face{display:none}
+.disk.dead .dead-face{display:inline}
+.disk.dead .body{fill:var(--dead)}
+.disk.dead .slots{opacity:.18}
+.disk.dead{animation:shake .4s}
+.disk .lbl{font:600 11px "Heebo",sans-serif;fill:var(--muted);text-anchor:middle}
+.blk-t{font:700 11px "JetBrains Mono",monospace;fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.blk{animation:drop 7s infinite both;animation-delay:var(--d)}
+.bracket{stroke:var(--muted);stroke-width:1.6;fill:none}
+.bracket-t{font:600 11px "JetBrains Mono",monospace;fill:var(--muted);text-anchor:middle}
+@keyframes drop{
+  0%{opacity:0;transform:translateY(-34px)}
+  6%{opacity:1;transform:translateY(3px)}
+  9%{transform:translateY(0)}
+  82%{opacity:1;transform:translateY(0)}
+  92%,100%{opacity:0;transform:translateY(0)}
+}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@media (prefers-reduced-motion: reduce){.blk{animation:none;opacity:1}.disk.dead{animation:none}}
+
+/* callouts */
+.callout{border-radius:var(--radius);padding:16px 20px;margin:20px 0;border:1px solid transparent}
+.callout b.t{display:block;font-family:"Rubik",sans-serif;font-size:1.05rem;margin-bottom:4px}
+.callout p:last-child{margin-bottom:0}
+.callout.bad{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+.callout.ok{background:var(--ok-soft);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}
+.callout.warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.callout.info{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 25%,transparent)}
+
+/* transition banner */
+.now{margin:48px 0 0;padding:26px 22px;border-radius:var(--radius);background:var(--text);color:var(--bg);text-align:center}
+.now small{display:block;opacity:.7;font-size:.9rem}
+.now strong{font-family:"Rubik",sans-serif;font-size:1.6rem}
+
+/* requirement cards */
+.reqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
+.req{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.req h4{margin:0 0 4px;font-family:"Rubik",sans-serif;font-size:1.02rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.req p{margin:0;font-size:.93rem;color:var(--muted)}
+.tag{font-family:"Heebo",sans-serif;font-size:.72rem;font-weight:700;padding:1px 9px;border-radius:999px}
+.tag.must{background:var(--bad-soft);color:var(--bad)}
+.tag.rec{background:var(--ok-soft);color:var(--ok)}
+.tag.tip{background:var(--accent-soft);color:var(--accent)}
+
+/* table */
+.table-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{padding:10px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--surface-2);font-family:"Rubik",sans-serif}
+tbody tr:last-child td{border-bottom:none}
+td.y{color:var(--ok);font-weight:700} td.n{color:var(--bad);font-weight:700}
+
+/* os sections */
+.os-head{display:flex;align-items:center;gap:12px}
+.os-head .os-dot{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.os-head .os-dot svg{width:22px;height:22px;fill:#fff}
+.win .os-dot{background:var(--win)} .lin .os-dot{background:var(--lin)} .mac .os-dot{background:var(--mac)}
+.option{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 20px 14px;margin:16px 0}
+@media (max-width:480px){.option{padding:4px 14px 12px}}
+.option h3{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+ol.steps{padding-inline-start:0;list-style:none;counter-reset:s;margin:10px 0}
+ol.steps>li{counter-increment:s;position:relative;padding-inline-start:40px;margin:12px 0}
+ol.steps>li::before{content:counter(s);position:absolute;inset-inline-start:0;top:2px;width:27px;height:27px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font:700 .85rem/27px "Rubik",sans-serif;text-align:center}
+
+/* code */
+.code{position:relative;margin:10px 0 14px}
+.code pre{direction:ltr;text-align:left;background:var(--code-bg);color:var(--code-text);border-radius:12px;padding:38px 18px 16px;overflow-x:auto;margin:0;font:13.5px/1.65 "JetBrains Mono",ui-monospace,monospace}
+.code pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.code pre .c{color:var(--code-muted)}
+.code .copy{position:absolute;top:8px;left:8px;font:600 .75rem "Heebo",sans-serif;background:#2b2f3b;color:#d9dce6;border:0;border-radius:8px;padding:4px 10px;cursor:pointer;opacity:.85}
+.code .copy:hover{opacity:1}
+.code .lang{position:absolute;top:9px;right:12px;font:600 .7rem "JetBrains Mono",monospace;color:var(--code-muted);pointer-events:none}
+
+/* faq */
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:10px 0}
+details summary{cursor:pointer;font-weight:700;font-family:"Rubik",sans-serif;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p,details ul{font-size:.96rem}
+
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.sum{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;border-top:4px solid var(--accent)}
+.sum.w{border-top-color:var(--win)} .sum.l{border-top-color:var(--lin)} .sum.m{border-top-color:var(--mac)}
+.sum b{font-family:"Rubik",sans-serif;display:block;margin-bottom:4px}
+.sum p{margin:0;font-size:.92rem;color:var(--muted)}
+
+footer{margin:60px 0 40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="brand"><img src="data:image/webp;base64,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" alt="" width="52" height="52"><span>Nissim<i>.</i>Bits</span></div>
+  <span class="kicker">מדריך · אחסון</span>
+  <h1>RAID 1 מאפס: <span class="hl">שני כוננים, עותק אחד שלא הולך לאיבוד</span></h1>
+  <p class="lead">בסרטון דיברתי על RAID 1. כאן יש את כל מה שלא נכנס לדקה: מה צריך לקנות, איך מגדירים בווינדוס, בלינוקס ובמק, מה עושים כשכונן מת, ובסוף איך שמים את מערכת ההפעלה עצמה על RAID.</p>
+  <p class="byline">המדריך נכתב על ידי <b>ניסים עזר</b> בשביל ערוץ <bdi>Nissim.Bits</bdi></p>
+  <!-- להחליף את ה-href בקישור לסרטון -->
+  <a class="btn" href="#">▶ לסרטון באינסטגרם</a>
+</header>
+
+<nav class="toc" aria-label="תוכן העניינים">
+  <b>מה יש פה</b>
+  <ol>
+    <li><a href="#what">מה זה RAID בכלל</a></li>
+    <li><a href="#levels">סוגי RAID במשפט אחד</a></li>
+    <li><a href="#need">מה צריך ל-RAID 1</a></li>
+    <li><a href="#bios">צריך ביוס?</a></li>
+    <li><a href="#windows">Windows</a></li>
+    <li><a href="#linux">Linux</a></li>
+    <li><a href="#mac">macOS</a></li>
+    <li><a href="#failure">כשכונן מת</a></li>
+    <li><a href="#os-drive">למתקדמים: RAID למערכת ההפעלה</a></li>
+    <li><a href="#faq">שאלות נפוצות וסיכום</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<h2 id="what">רגע לפני: מה זה RAID?</h2>
+<p><strong>RAID</strong> <bdi>(Redundant Array of Independent Disks)</bdi> זו שיטה לחבר כמה כוננים פיזיים כך שמערכת ההפעלה תראה אותם ככונן אחד. קבוצת הכוננים המחוברים נקראת <strong>מערך</strong> (array). איך בדיוק מחברים אותם נקבע לפי ה"רמה" (level): חלק מהרמות נותנות מהירות, חלק הגנה מפני כונן שמת, וחלק את שניהם.</p>
+
+<!-- 2 -->
+<h2 id="levels">סוגי RAID, כל אחד במשפט</h2>
+<p>כל ריבוע הוא חתיכת מידע שנכתבת לכונן. <strong>לחצו על כונן כדי לשרוף אותו</strong> ותראו אם המידע שורד.</p>
+<div class="legend">
+  <span><i style="background:var(--d-a)"></i>מידע</span>
+  <span><i style="background:var(--parity)"></i>זוגיות P (בלוק חישובי לשחזור)</span>
+  <span><i style="background:var(--parity-q)"></i>זוגיות שנייה Q</span>
+</div>
+
+<div class="raid-grid">
+  <article class="raid-card">
+    <header><h3>RAID 0</h3><span class="nick">פיזור (striping)</span></header>
+    <svg class="raid-svg" data-raid="raid0" role="img" aria-label="איור RAID 0"></svg>
+    <div class="sim"><span class="status">לחצו על כונן 👆</span><button type="button">אפס</button></div>
+    <p>הקובץ נחתך לחתיכות שמתפזרות בין הכוננים. זה מהיר מאוד, אבל כונן אחד שמת לוקח איתו את כל המידע.</p>
+    <div class="chips"><span class="chip">מינימום <b>2</b></span><span class="chip">נפח: <b>כל הכוננים</b></span><span class="chip">שורד: <b>0 כוננים</b></span></div>
+  </article>
+
+  <article class="raid-card star">
+    <header><h3>RAID 1</h3><span class="nick">מראה (mirroring)</span><span class="badge-star">עליו המדריך</span></header>
+    <svg class="raid-svg" data-raid="raid1" role="img" aria-label="איור RAID 1"></svg>
+    <div class="sim"><span class="status">לחצו על כונן 👆</span><button type="button">אפס</button></div>
+    <p>כל מה שנכתב לכונן אחד נכתב בדיוק גם לשני. מאבדים חצי מהנפח, ומרוויחים שקט.</p>
+    <div class="chips"><span class="chip">מינימום <b>2</b></span><span class="chip">נפח: <b>של כונן אחד</b></span><span class="chip">שורד: <b>כונן 1</b></span></div>
+  </article>
+
+  <article class="raid-card">
+    <header><h3>RAID 5</h3><span class="nick">פיזור + זוגיות</span></header>
+    <svg class="raid-svg" data-raid="raid5" role="img" aria-label="איור RAID 5"></svg>
+    <div class="sim"><span class="status">לחצו על כונן 👆</span><button type="button">אפס</button></div>
+    <p>המידע מתפזר כמו ב-RAID 0, ועל כל שורה נשמר גם בלוק זוגיות (P). ממנו אפשר לחשב מחדש כל כונן אחד שנופל.</p>
+    <div class="chips"><span class="chip">מינימום <b>3</b></span><span class="chip">נפח: <b>N פחות 1</b></span><span class="chip">שורד: <b>כונן 1</b></span></div>
+  </article>
+
+  <article class="raid-card">
+    <header><h3>RAID 6</h3><span class="nick">זוגיות כפולה</span></header>
+    <svg class="raid-svg" data-raid="raid6" role="img" aria-label="איור RAID 6"></svg>
+    <div class="sim"><span class="status">לחצו על כונן 👆</span><button type="button">אפס</button></div>
+    <p>כמו RAID 5, רק עם שני בלוקי זוגיות (P ו-Q). המערך שורד גם שני כוננים שמתים באותו זמן.</p>
+    <div class="chips"><span class="chip">מינימום <b>4</b></span><span class="chip">נפח: <b>N פחות 2</b></span><span class="chip">שורד: <b>2 כוננים</b></span></div>
+  </article>
+
+  <article class="raid-card">
+    <header><h3>RAID 10</h3><span class="nick">מראות בפיזור</span></header>
+    <svg class="raid-svg" data-raid="raid10" role="img" aria-label="איור RAID 10"></svg>
+    <div class="sim"><span class="status">לחצו על כונן 👆</span><button type="button">אפס</button></div>
+    <p>זוגות של מראות (RAID 1), והמידע מפוזר בין הזוגות (RAID 0). מקבלים מהירות והגנה, במחיר חצי מהנפח.</p>
+    <div class="chips"><span class="chip">מינימום <b>4</b></span><span class="chip">נפח: <b>חצי</b></span><span class="chip">שורד: <b>כונן 1 בכל זוג</b></span></div>
+  </article>
+</div>
+
+<div class="callout bad">
+  <b class="t">⚠️ RAID 1 הוא לא גיבוי</b>
+  <p>RAID 1 מגן מפני דבר אחד: כונן שמת. הוא לא מגן ממחיקה בטעות, מכופרה, מקובץ שנהרס או מגניבה של המחשב, כי כל אלה משוכפלים לשני הכוננים בתוך מילישנייה. RAID נותן לך זמינות, וגיבוי הוא עותק נפרד. צריך את שניהם.</p>
+</div>
+
+<div class="now"><small>מספיק תיאוריה.</small><strong>עכשיו נגדיר RAID 1 👇</strong></div>
+
+<!-- 3 -->
+<h2 id="need">מה צריך לפני שמתחילים</h2>
+<div class="reqs">
+  <div class="req"><h4>שני כוננים <span class="tag must">חובה</span></h4><p>שני כוננים נוספים, מעבר לכונן שעליו מותקנת מערכת ההפעלה. RAID לכונן המערכת עצמו נמצא <a href="#os-drive">בפרק המתקדמים</a>.</p></div>
+  <div class="req"><h4>גיבוי לפני <span class="tag must">חובה</span></h4><p>יצירת המערך מוחקת כל מה שיש על שני הכוננים. מגבים קודם.</p></div>
+  <div class="req"><h4>אותו גודל <span class="tag rec">מומלץ</span></h4><p>זה לא חובה, אבל הנפח של המערך הוא הנפח של הכונן הקטן. כונן של 1TB עם כונן של 2TB נותנים 1TB, והשאר מתבזבז.</p></div>
+  <div class="req"><h4>אותו סוג <span class="tag rec">מומלץ</span></h4><p>SSD עם HDD יעבוד, אבל כל כתיבה תחכה לכונן האיטי. זה נכון גם לשני סוגי SSD: אם משלבים SSD מסוג NVMe עם SSD מסוג SATA, שהוא איטי ממנו פי כמה, ה-NVMe יכתוב במהירות של ה-SATA.</p></div>
+  <div class="req"><h4>אותו דגם, סדרה אחרת <span class="tag tip">טיפ</span></h4><p>כוננים מאותה סדרת ייצור נוטים להזדקן יחד. אם אפשר, קנו אותם בהפרש זמן או משתי חנויות שונות.</p></div>
+  <div class="req"><h4>בדיסקים קשיחים: CMR <span class="tag tip">טיפ</span></h4><p>העדיפו כונני CMR (למשל סדרות NAS כמו WD Red Plus או Seagate IronWolf) על פני SMR. בכונני SMR בנייה מחדש של המערך יכולה להיות איטית מאוד.</p></div>
+  <div class="req"><h4>חיבור פנימי <span class="tag rec">מומלץ</span></h4><p>כוננים בחיבור USB עובדים, אבל אם כבל אחד מתנתק לרגע, המערכת מתייחסת לכונן כאילו מת. כשהוא חוזר, היא מעתיקה אליו מחדש את כל המידע מהכונן השני, וזה יכול לקחת שעות.</p></div>
+</div>
+<div class="callout info">
+  <b class="t">ומה עם מהירות?</b>
+  <p>כתיבה ל-RAID 1 מהירה בערך כמו לכונן בודד, כי כל דבר נכתב פעמיים. קריאה יכולה להיות מהירה יותר, כי המערכת מסוגלת לקרוא משני הכוננים במקביל.</p>
+</div>
+
+<!-- 4 -->
+<h2 id="bios">רגע, צריך להגדיר משהו בביוס?</h2>
+<div class="callout ok">
+  <b class="t">התשובה הקצרה: לכונן נתונים, לא.</b>
+  <p>כל שלוש מערכות ההפעלה יודעות לעשות RAID 1 בתוכנה, בלי לגעת בביוס. RAID של הביוס רלוונטי בעיקר כשרוצים לשים את ווינדוס עצמה על RAID, וזה נמצא <a href="#os-drive">בפרק המתקדמים</a>.</p>
+</div>
+<p>יש שלושה סוגים של RAID, וכדאי להכיר את ההבדל:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th></th><th>RAID בתוכנה</th><th>RAID בביוס ("Fake RAID")</th><th>בקר RAID חומרתי</th></tr></thead>
+  <tbody>
+    <tr><th>מי עושה את העבודה</th><td>מערכת ההפעלה</td><td>דרייבר במערכת ההפעלה, בעזרת הביוס</td><td>כרטיס עם מעבד משלו</td></tr>
+    <tr><th>דוגמאות</th><td>Storage Spaces, mdadm, AppleRAID</td><td>Intel RST / VMD, AMD RAIDXpert2</td><td>כרטיסים של Broadcom / LSI</td></tr>
+    <tr><th>עלות</th><td>חינם</td><td>חינם (מובנה בלוח האם)</td><td>מאות דולרים</td></tr>
+    <tr><th>להעביר למחשב אחר</th><td class="y">קל</td><td class="n">רק ללוח עם אותו סוג בקר</td><td class="y">עם אותו כרטיס</td></tr>
+    <tr><th>מתי להשתמש</th><td>כונני נתונים, כמעט תמיד</td><td>מערכת ההפעלה בווינדוס</td><td>שרתים</td></tr>
+  </tbody>
+</table>
+</div>
+<p>RAID של הביוס נשמע "חומרתי", אבל בפועל המעבד שלך עושה את העבודה, והמערך נשאר קשור ללוח האם. אם הלוח מת, צריך לוח עם בקר תואם כדי לקרוא את המידע. ב-RAID בתוכנה מחברים את הכוננים לכל מחשב עם אותה מערכת הפעלה, והמערך עולה.</p>
+<div class="callout warn">
+  <b class="t">אל תשנו את מצב ה-SATA בביוס במחשב שכבר עובד</b>
+  <p>מעבר בין AHCI ל-RAID במחשב שווינדוס כבר מותקנת עליו עלול לגרום לכך שהמחשב לא יעלה.</p>
+</div>
+
+<!-- 5 WINDOWS -->
+<section class="win">
+<h2 id="windows" class="os-head"><span class="os-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10 4.5v7H3zM11 4.3 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.3z"/></svg></span>Windows</h2>
+<p>יש בווינדוס שתי דרכים מובנות. <strong>Storage Spaces</strong> היא הדרך המומלצת, והיא עובדת גם ב-Windows Home. הדרך הישנה, <strong>Mirrored Volume</strong> בניהול הדיסקים, קיימת רק ב-Pro ומעלה ומבוססת על "דיסקים דינמיים". מיקרוסופט עצמה כבר ממליצה לא להשתמש בהם.</p>
+
+<div class="option">
+<h3>דרך א': Storage Spaces <span class="tag rec">מומלץ</span></h3>
+<ol class="steps">
+  <li>חברו את שני הכוננים, וודאו שאין עליהם שום דבר שחשוב לכם.</li>
+  <li>פתחו <span class="path">Settings › System › Storage › Advanced storage settings › Storage Spaces</span>.</li>
+  <li>תחת <strong>Add a new storage pool</strong> לחצו <strong>Add</strong>, תנו שם למאגר (pool), סמנו את שני הכוננים ולחצו <strong>Create</strong>.</li>
+  <li>במסך של ה-Storage Space תנו שם, השאירו את הגודל המוצע, וב-<strong>Resiliency</strong> בחרו <strong>Two-way mirror</strong>. זה ה-RAID 1. לחצו <strong>Create</strong>.</li>
+  <li>במסך ה-Volume תנו תווית ואות כונן, בחרו <strong>NTFS</strong> ולחצו <strong>Format</strong>.</li>
+</ol>
+<p>זהו. כונן חדש מופיע בסייר הקבצים, וכל מה ששומרים עליו נכתב לשני הכוננים. ב-Windows 10 הדרך היא דרך <span class="path">Control Panel › Storage Spaces › Create a new pool and storage space</span>, עם אותן אפשרויות.</p>
+
+<p><strong>מעדיפים PowerShell?</strong> הריצו כמנהל. שימו לב שהשורה הראשונה בוחרת את <em>כל</em> הכוננים שאפשר לצרף, אז בדקו מה היא החזירה לפני שממשיכים:</p>
+<div class="code has-lang"><span class="lang">PowerShell</span><pre><code><span class="c"># check this list before continuing</span>
+$disks = Get-PhysicalDisk -CanPool $true
+$disks | Format-Table FriendlyName, Size, MediaType
+
+New-StoragePool -FriendlyName "MirrorPool" `
+  -StorageSubSystemFriendlyName "Windows Storage*" -PhysicalDisks $disks
+
+New-VirtualDisk -StoragePoolFriendlyName "MirrorPool" -FriendlyName "Mirror" `
+  -ResiliencySettingName Mirror -NumberOfDataCopies 2 -UseMaximumSize
+
+Get-VirtualDisk -FriendlyName "Mirror" | Get-Disk |
+  Initialize-Disk -PartitionStyle GPT -PassThru |
+  New-Partition -AssignDriveLetter -UseMaximumSize |
+  Format-Volume -FileSystem NTFS -NewFileSystemLabel "Mirror"</code></pre></div>
+<p>לבדיקת המצב בכל רגע:</p>
+<div class="code has-lang"><span class="lang">PowerShell</span><pre><code>Get-VirtualDisk | Format-Table FriendlyName, ResiliencySettingName, HealthStatus, OperationalStatus</code></pre></div>
+</div>
+
+<div class="option">
+<h3>דרך ב': Mirrored Volume בניהול דיסקים <span class="tag tip">Pro בלבד</span></h3>
+<ol class="steps">
+  <li>לחצו <code>Win + X</code> ופתחו <strong>Disk Management</strong>. שני הכוננים צריכים להופיע כ-<strong>Unallocated</strong>. אם יש עליהם מחיצות, מוחקים אותן (Delete Volume), אחרי גיבוי.</li>
+  <li>לחיצה ימנית על השטח הלא מוקצה בכונן הראשון ובחירה ב-<strong>New Mirrored Volume</strong>.</li>
+  <li>מוסיפים את הכונן השני עם <strong>Add</strong>, בוחרים אות, NTFS ו-Quick format, ולוחצים <strong>Finish</strong>.</li>
+  <li>מאשרים את ההמרה ל-<strong>Dynamic disks</strong>.</li>
+</ol>
+<p>הסטטוס יהיה <code>Resynching</code> למשך זמן מה, ואחר כך <code>Healthy</code>. אם האפשרות <strong>New Mirrored Volume</strong> בכלל לא מופיעה, כנראה שמותקנת אצלכם Windows Home. במקרה כזה משתמשים בדרך א'.</p>
+</div>
+</section>
+
+<!-- 6 LINUX -->
+<section class="lin">
+<h2 id="linux" class="os-head"><span class="os-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM2 18h20v2H2zM6 8l3 2.5L6 13M11 13h5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Linux</h2>
+<p>הכלי הסטנדרטי הוא <code>mdadm</code>. הפקודות כאן מתאימות ל-Ubuntu ול-Debian, והשינויים ל-Fedora מופיעים בהערות.</p>
+<ol class="steps">
+  <li><strong>מזהים את הכוננים.</strong> זה השלב הכי חשוב. כונן לא נכון פירושו מידע שנמחק.
+<div class="code"><pre><code>lsblk -o NAME,SIZE,MODEL,SERIAL</code></pre></div>
+  בדוגמה הכוננים הם <code>/dev/sdb</code> ו-<code>/dev/sdc</code>. אצלכם השמות עשויים להיות אחרים, ובכונני NVMe הם יהיו למשל <code>/dev/nvme1n1</code>.</li>
+  <li><strong>מתקינים את mdadm.</strong>
+<div class="code"><pre><code>sudo apt install mdadm        <span class="c"># Fedora: sudo dnf install mdadm</span></code></pre></div></li>
+  <li><strong>מנקים חתימות ישנות</strong> (זה מוחק את מה שעל הכוננים):
+<div class="code"><pre><code>sudo wipefs -a /dev/sdb /dev/sdc</code></pre></div></li>
+  <li><strong>יוצרים את המערך.</strong> אם mdadm שואל <code>Continue creating array?</code>, עונים <code>y</code>.
+<div class="code"><pre><code>sudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc</code></pre></div></li>
+  <li><strong>עוקבים אחרי הסנכרון הראשוני.</strong> הוא יכול לקחת שעות, אבל אפשר להמשיך לעבוד עם המערך בינתיים.
+<div class="code"><pre><code>watch cat /proc/mdstat</code></pre></div></li>
+  <li><strong>מפרמטים ומחברים (mount):</strong>
+<div class="code"><pre><code>sudo mkfs.ext4 /dev/md0
+sudo mkdir -p /mnt/raid1
+sudo mount /dev/md0 /mnt/raid1</code></pre></div></li>
+  <li><strong>שומרים את ההגדרה כך שתשרוד ריבוט.</strong> בלי השלב הזה המערך עלול לעלות בשם אחר, כמו <code>md127</code>.
+<div class="code"><pre><code>sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+sudo update-initramfs -u
+<span class="c"># Fedora: write to /etc/mdadm.conf and run: sudo dracut -f</span></code></pre></div></li>
+  <li><strong>עלייה אוטומטית ב-fstab.</strong> מוצאים את ה-UUID:
+<div class="code"><pre><code>sudo blkid /dev/md0</code></pre></div>
+  ומוסיפים שורה ל-<code>/etc/fstab</code>. האפשרות <code>nofail</code> דואגת שהמחשב יעלה גם אם המערך בעייתי:
+<div class="code"><pre><code>UUID=your-uuid-here  /mnt/raid1  ext4  defaults,nofail  0  2</code></pre></div>
+  בודקים עם <code>sudo mount -a</code> לפני ריבוט. אם אין שגיאה, זה עובד.</li>
+</ol>
+<div class="callout info">
+  <b class="t">חלופה מודרנית: ZFS או Btrfs</b>
+  <p>שתי מערכות הקבצים האלה יודעות לעשות מראה בעצמן, ויש להן יתרון אמיתי: הן שומרות checksum לכל בלוק. כך הן מזהות גם קובץ שהשתבש בשקט, ומתקנות אותו מהעותק התקין. ב-mdadm אין את זה.</p>
+<div class="code"><pre><code>sudo zpool create tank mirror /dev/disk/by-id/DISK1 /dev/disk/by-id/DISK2
+<span class="c"># or</span>
+sudo mkfs.btrfs -m raid1 -d raid1 /dev/sdb /dev/sdc</code></pre></div>
+</div>
+</section>
+
+<!-- 7 MAC -->
+<section class="mac">
+<h2 id="mac" class="os-head"><span class="os-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></span>macOS</h2>
+<p>ב-Disk Utility יש אשף RAID מובנה (AppleRAID). המגבלה היחידה: אפשר לבנות את המערך רק על כוננים נוספים, לא על כונן ההפעלה.</p>
+<div class="option">
+<h3>דרך א': Disk Utility</h3>
+<ol class="steps">
+  <li>חברו את שני הכוננים. מומלץ לנתק כוננים חיצוניים אחרים, כדי לא לבחור בטעות כונן לא נכון.</li>
+  <li>פתחו <strong>Disk Utility</strong> ובחרו <span class="path">View › Show All Devices</span>.</li>
+  <li>בחרו <span class="path">File › RAID Assistant</span>, אחר כך <strong>Mirrored (RAID 1)</strong>, ולחצו <strong>Next</strong>.</li>
+  <li>סמנו את שני הכוננים. בעמודת <strong>Role</strong> השאירו <strong>RAID slice</strong>. כונן שלישי, אם יש, יכול לשמש כ-<strong>Spare</strong>.</li>
+  <li>תנו שם, בחרו פורמט (<strong>APFS</strong> או <strong>Mac OS Extended (Journaled)</strong>), השאירו את ה-Chunk size כפי שהוא, וסמנו <strong>Automatically rebuild</strong>. לחצו <strong>Create</strong> ואז <strong>Done</strong>.</li>
+</ol>
+<p>המערך יופיע תחת <strong>RAID Sets</strong> ב-Disk Utility וכדיסק רגיל ב-Finder.</p>
+</div>
+<div class="option">
+<h3>דרך ב': טרמינל</h3>
+<div class="code"><pre><code>diskutil list                                  <span class="c"># find the disks, e.g. disk4 and disk5</span>
+diskutil appleRAID create mirror Mirror APFS disk4 disk5
+diskutil appleRAID list                        <span class="c"># status</span></code></pre></div>
+</div>
+</section>
+
+<!-- 8 FAILURE -->
+<h2 id="failure">כשכונן מת (וזה הכל העניין)</h2>
+<p>RAID 1 עוזר רק אם שמים לב שכונן מת. המערך ממשיך לעבוד כרגיל עם כונן אחד, ובדיוק בגלל זה קל לפספס שאין יותר הגנה. בדקו את המצב מדי פעם, ואם אפשר, הגדירו התראות. כלי SMART כמו <strong>CrystalDiskInfo</strong> בווינדוס או <code>smartctl</code> בלינוקס ובמק מתריעים עוד לפני שהכונן מת.</p>
+
+<h3>Windows: Storage Spaces</h3>
+<ol class="steps">
+  <li>ב-<span class="path">Storage Spaces</span> תופיע אזהרה על המאגר. חברו כונן חדש והוסיפו אותו למאגר. ב-Control Panel זה <strong>Change settings › Add drives</strong>.</li>
+  <li>על הכונן התקול בחרו <strong>Prepare for removal</strong>, ואחר כך <strong>Remove</strong>.</li>
+  <li>ווינדוס משקמת את המראה לבד. אפשר גם לזרז עם <code>Repair-VirtualDisk -FriendlyName "Mirror"</code>.</li>
+</ol>
+
+<h3>Windows: Mirrored Volume</h3>
+<ol class="steps">
+  <li>הסטטוס יהיה <code>Failed Redundancy</code>, והכונן התקול יסומן <code>Missing</code>.</li>
+  <li>לחיצה ימנית על הווליום בכונן החסר ובחירה ב-<strong>Remove Mirror</strong>.</li>
+  <li>מחברים כונן חדש, ואז לחיצה ימנית על הווליום הקיים, <strong>Add Mirror</strong>, ובחירה בכונן החדש.</li>
+</ol>
+
+<h3>Linux: mdadm</h3>
+<div class="code"><pre><code>sudo mdadm --detail /dev/md0                         <span class="c"># which disk failed?</span>
+sudo mdadm --manage /dev/md0 --fail /dev/sdb --remove /dev/sdb
+<span class="c"># swap the physical disk, then:</span>
+sudo mdadm --manage /dev/md0 --add /dev/sdd
+watch cat /proc/mdstat                               <span class="c"># rebuild progress</span></code></pre></div>
+<p>כדי לקבל מייל כשמשהו קורה, הוסיפו שורה כמו <code>MAILADDR you@example.com</code> לקובץ <code>mdadm.conf</code>. צריך גם שרת דואר מוגדר במחשב.</p>
+
+<h3>macOS: AppleRAID</h3>
+<p>ב-Disk Utility המערך יסומן כ-<strong>Degraded</strong>. מחברים כונן חדש ומוסיפים אותו למערך, דרך כפתור ה-<strong>+</strong> במסך של ה-RAID או בטרמינל:</p>
+<div class="code"><pre><code>diskutil appleRAID list                        <span class="c"># set name / UUID</span>
+diskutil appleRAID add member disk6 Mirror     <span class="c"># starts the rebuild</span></code></pre></div>
+
+<div class="callout warn">
+  <b class="t">בזמן בנייה מחדש</b>
+  <p>הכונן שנשאר עובד עכשיו הכי קשה, ואין לו גיבוי. אם עוד לא גיביתם, זה הזמן. ואל תעמיסו עליו עבודה כבדה עד שהבנייה מסתיימת.</p>
+</div>
+
+<!-- 9 ADVANCED -->
+<h2 id="os-drive">למתקדמים: RAID לכונן מערכת ההפעלה</h2>
+<p>הרעיון הוא שאם כונן המערכת מת, המחשב ממשיך לעלות מהכונן השני. זה אפשרי, אבל מסובך יותר, ובכל מערכת זה עובד אחרת. בכל המקרים מדובר <strong>בהתקנה נקייה</strong>, אז גבו הכל לפני.</p>
+
+<section class="win">
+<h3>Windows: RAID דרך הביוס</h3>
+<ol class="steps">
+  <li>בביוס, הפעילו את מצב ה-RAID. בפלטפורמות של Intel זה בדרך כלל <strong>VMD</strong> או <strong>Intel RST</strong>, ובפלטפורמות של AMD זה <strong>SATA/NVMe RAID mode</strong>. השמות משתנים מלוח ללוח, אז בדקו במדריך של הלוח.</li>
+  <li>בכלי ה-RAID של הביוס (Intel RST או AMD RAIDXpert2) צרו ווליום <strong>RAID 1</strong> משני הכוננים.</li>
+  <li>מאתר התמיכה של יצרן לוח האם הורידו את דרייבר ה-RAID (לפעמים נקרא <em>F6 driver</em>) ופרסו אותו על הדיסק-און-קי של ההתקנה.</li>
+  <li>בהתקנת ווינדוס, כשלא מופיעים כוננים, לחצו <strong>Load driver</strong> ובחרו את התיקייה. המערך יופיע ככונן אחד, ומתקינים עליו כרגיל.</li>
+  <li>אחרי ההתקנה, התקינו את אפליקציית ה-RST או ה-RAIDXpert2 כדי לקבל התראות על מצב המערך.</li>
+</ol>
+<div class="callout warn">
+  <b class="t">ומה עם Add Mirror על כונן C?</b>
+  <p>ב-Windows Pro אפשר טכנית ללחוץ לחיצה ימנית על C ולבחור <strong>Add Mirror</strong>. אבל במחשבי UEFI מחיצת האתחול (EFI) לא משתכפלת אוטומטית, ויש דיווחים על תקלות בשדרוגי גרסה של ווינדוס עם דיסקים דינמיים. לרוב האנשים אני לא ממליץ על הדרך הזו.</p>
+</div>
+</section>
+
+<section class="lin">
+<h3>Linux: בזמן ההתקנה</h3>
+<p>ההתקנה של <strong>Ubuntu Server</strong> תומכת בזה ישירות:</p>
+<ol class="steps">
+  <li>במסך האחסון בחרו <strong>Custom storage layout</strong>.</li>
+  <li>על הכונן הראשון בחרו <strong>Use As Boot Device</strong>, ועל השני <strong>Add As Another Boot Device</strong>. כך נוצרת מחיצת EFI בכל אחד מהכוננים.</li>
+  <li>בכל כונן הוסיפו מחיצה על שאר המקום, ובחרו <strong>Leave unformatted</strong>.</li>
+  <li>בחרו <strong>Create software RAID (md)</strong>, רמה <strong>1</strong>, וסמנו את שתי המחיצות.</li>
+  <li>על <code>md0</code> בחרו פורמט <strong>ext4</strong> ונקודת mount <code>/</code>, והמשיכו בהתקנה.</li>
+</ol>
+<p>המתקין הגרפי של Ubuntu Desktop לא מציע את האפשרות הזו. אפשר להתקין Server ואחר כך להוסיף ממשק עם <code>sudo apt install ubuntu-desktop</code>, או להשתמש בהפצה שהמתקין שלה תומך ב-RAID בחלוקה הידנית, כמו Fedora או Debian.</p>
+</section>
+
+<section class="mac">
+<h3>macOS: התשובה הכנה היא לא</h3>
+<p>אפל עצמה כותבת שאי אפשר ליצור RAID על דיסק ההפעלה. גרסאות macOS מודרניות גם לא תומכות באתחול מ-RAID בתוכנה. במחשבי Apple Silicon יש סיבה נוספת: תהליך האתחול תמיד עובר דרך ה-SSD הפנימי.</p>
+<p><strong>מה כן:</strong> Time Machine לכונן חיצוני, ואת המידע החשוב לשמור על מערך המראה מפרק 7.</p>
+</section>
+
+<!-- 10 FAQ -->
+<h2 id="faq">שאלות נפוצות</h2>
+<details>
+  <summary>אפשר להפוך כונן קיים עם מידע ל-RAID 1 בלי למחוק אותו?</summary>
+  <ul>
+    <li><strong>Windows Pro:</strong> כן. ב-Disk Management לוחצים לחיצה ימנית על הווליום, בוחרים <strong>Add Mirror</strong> ובוחרים כונן ריק. הכוננים יומרו לדיסקים דינמיים.</li>
+    <li><strong>Storage Spaces:</strong> לא. מגבים, יוצרים את המערך ומשחזרים.</li>
+    <li><strong>Linux:</strong> אפשר. יוצרים מערך "חסר" עם הכונן החדש ועם <code>missing</code> במקום הכונן השני, מעתיקים אליו את המידע, ואחר כך מוסיפים את הכונן המקורי. זה מתקדם, אז עושים את זה עם גיבוי.</li>
+    <li><strong>Mac:</strong> רק בווליום מסוג Mac OS Extended (HFS+), עם <code>diskutil appleRAID enable mirror diskXsY</code>.</li>
+  </ul>
+</details>
+<details>
+  <summary>אפשר להעביר את הכוננים למחשב אחר?</summary>
+  <p>ב-RAID בתוכנה כן. Storage Spaces מזוהה בכל מחשב ווינדוס, mdadm מרכיב את המערך לבד ברוב ההפצות, ו-AppleRAID עולה בכל מק. ב-RAID של הביוס צריך לוח עם בקר תואם.</p>
+</details>
+<details>
+  <summary>זה יאט לי את המחשב?</summary>
+  <p>כמעט לא. כתיבה היא בערך במהירות של כונן בודד, וקריאה יכולה להיות קצת מהירה יותר. העומס על המעבד זניח במחשבים מודרניים.</p>
+</details>
+<details>
+  <summary>אם יש לי סנכרון לענן, צריך גם RAID 1?</summary>
+  <p>אלה דברים שונים. סנכרון לענן (כמו OneDrive או Google Drive) מעתיק גם מחיקות, בדיוק כמו RAID. מה שבאמת שומר עליכם זה גיבוי עם היסטוריית גרסאות. RAID 1 חוסך לכם את הזמן שבו המחשב מושבת כשכונן מת, וגיבוי חוסך לכם את המידע.</p>
+</details>
+<details>
+  <summary>אפשר לשלב כוננים בגדלים שונים?</summary>
+  <p>כן, אבל הנפח של המערך יהיה כמו של הכונן הקטן. בהמשך אפשר להחליף את הקטן בגדול, לחכות לבנייה מחדש, ולהרחיב את המערך. אבל זה כבר נושא למדריך אחר.</p>
+</details>
+
+<h2>סיכום: המסלול המומלץ</h2>
+<div class="summary-grid">
+  <div class="sum w"><b>Windows</b><p>Storage Spaces עם Two-way mirror. עובד גם ב-Home.</p></div>
+  <div class="sum l"><b>Linux</b><p>mdadm, או ZFS/Btrfs אם רוצים גם הגנה מקבצים שמשתבשים.</p></div>
+  <div class="sum m"><b>macOS</b><p>Disk Utility, ואז RAID Assistant ו-Mirrored.</p></div>
+  <div class="sum"><b>כונן מערכת</b><p>ווינדוס: RAID דרך הביוס. לינוקס: בזמן ההתקנה. מק: Time Machine.</p></div>
+</div>
+<div class="callout ok">
+  <b class="t">והכלל שחשוב יותר מכל RAID: 3-2-1</b>
+  <p>שלושה עותקים של המידע, על שני סוגי מדיה שונים, ואחד מהם מחוץ לבית. RAID 1 הוא שכבה מצוינת בתוך התוכנית הזו, אבל הוא לא מחליף אותה.</p>
+</div>
+
+<footer>נכתב כהמשך לסרטון על RAID 1 · יש תיקון או שאלה? כתבו לי בתגובות לסרטון<br>© 2026 ניסים עזר · <bdi>Nissim.Bits</bdi> · כל הזכויות שמורות</footer>
+</div>
+
+<script>
+(function(){
+  var COLORS={A:'var(--d-a)',B:'var(--d-b)',C:'var(--d-c)',P:'var(--parity)',Q:'var(--parity-q)'};
+  var L={
+    raid0:{rows:[['A1','A2'],['A3','A4'],['A5','A6']],ok:function(s){return s.size===0}},
+    raid1:{rows:[['A1','A1'],['A2','A2'],['A3','A3']],ok:function(s){return s.size<2}},
+    raid5:{rows:[['A1','A2','Ap'],['B1','Bp','B2'],['Cp','C1','C2']],ok:function(s){return s.size<=1}},
+    raid6:{rows:[['A1','A2','Ap','Aq'],['B1','Bp','Bq','B2'],['Cp','Cq','C1','C2']],ok:function(s){return s.size<=2}},
+    raid10:{rows:[['A1','A1','A2','A2'],['A3','A3','A4','A4'],['A5','A5','A6','A6']],pairs:true,
+      ok:function(s){return !((s.has(0)&&s.has(1))||(s.has(2)&&s.has(3)))}}
+  };
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+  function build(svg){
+    var key=svg.getAttribute('data-raid'),cfg=L[key],n=cfg.rows[0].length;
+    var W=64,H=150,G=16,PG=cfg.pairs?18:0,pad=14,top=34;
+    var xs=[],x=pad;
+    for(var i=0;i<n;i++){xs.push(x);x+=W+(i<n-1?(cfg.pairs&&i===1?G+PG:G):0)}
+    var width=x+pad,height=top+H+26+(cfg.pairs?48:0);
+    svg.setAttribute('viewBox','0 0 '+width+' '+height);
+    svg.style.maxWidth=Math.round(width*1.15)+'px';
+    // disk 1 on the right (RTL reading)
+    var order=xs.slice().reverse();
+    var disks=[];
+    for(var d=0;d<n;d++){
+      var dx=order[d];
+      var g=el('g',{'class':'disk','tabindex':'0','role':'button','aria-label':'כונן '+(d+1),'data-i':d},svg);
+      el('rect',{'class':'body',x:dx,y:top,width:W,height:H,rx:14},g);
+      var cx=dx+W/2,ey=top+20;
+      var af=el('g',{'class':'alive-face'},g);
+      el('circle',{'class':'eye dot',cx:cx-9,cy:ey,r:3.4},af);
+      el('circle',{'class':'eye dot',cx:cx+9,cy:ey,r:3.4},af);
+      el('path',{'class':'mouth',d:'M'+(cx-7)+' '+(ey+9)+' Q'+cx+' '+(ey+15)+' '+(cx+7)+' '+(ey+9)},af);
+      var df=el('g',{'class':'dead-face'},g);
+      [[-9],[9]].forEach(function(o){var ex=cx+o[0];
+        el('path',{'class':'eye',d:'M'+(ex-3)+' '+(ey-3)+' L'+(ex+3)+' '+(ey+3)+' M'+(ex+3)+' '+(ey-3)+' L'+(ex-3)+' '+(ey+3)},df)});
+      el('path',{'class':'mouth',d:'M'+(cx-7)+' '+(ey+14)+' Q'+cx+' '+(ey+8)+' '+(cx+7)+' '+(ey+14)},df);
+      var slots=el('g',{'class':'slots'},g);
+      for(var r=0;r<cfg.rows.length;r++){
+        var id=cfg.rows[r][d],letter=id[0],isP=id[1]==='p',isQ=id[1]==='q';
+        var color=isP?COLORS.P:isQ?COLORS.Q:COLORS[letter];
+        var by=top+44+r*34;
+        var b=el('g',{'class':'blk',style:'--d:'+(r*0.7+d*0.18).toFixed(2)+'s'},slots);
+        el('rect',{x:dx+8,y:by,width:W-16,height:26,rx:7,fill:color},b);
+        var t=el('text',{'class':'blk-t',x:cx,y:by+13},b);
+        t.textContent=isP?'P'+letter:isQ?'Q'+letter:id;
+      }
+      var lbl=el('text',{'class':'lbl',x:cx,y:top+H+17},g);lbl.textContent='כונן '+(d+1);
+      disks.push(g);
+    }
+    if(cfg.pairs){
+      var by2=top+H+30;
+      [[0,1],[2,3]].forEach(function(p){
+        var a=Math.min(order[p[0]],order[p[1]]),b=Math.max(order[p[0]],order[p[1]])+W;
+        el('path',{'class':'bracket',d:'M'+a+' '+by2+' v5 H'+b+' v-5'},svg);
+        el('text',{'class':'bracket-t',x:(a+b)/2,y:by2+18},svg).textContent='RAID 1';
+      });
+      var a0=xs[0],b0=xs[n-1]+W;
+      el('path',{'class':'bracket',d:'M'+a0+' '+(by2+26)+' v5 H'+b0+' v-5'},svg);
+      el('text',{'class':'bracket-t',x:(a0+b0)/2,y:by2+44},svg).textContent='RAID 0';
+    }
+
+    var card=svg.closest('.raid-card'),status=card.querySelector('.status'),reset=card.querySelector('.sim button');
+    var failed=new Set();
+    function update(){
+      status.className='status';
+      if(failed.size===0){status.textContent='לחצו על כונן 👆';reset.classList.remove('show');return}
+      reset.classList.add('show');
+      var n1=failed.size===1?'כונן אחד מת':failed.size+' כוננים מתו';
+      if(cfg.ok(failed)){status.classList.add('ok');status.textContent='✅ '+n1+', והמידע שלם'}
+      else{status.classList.add('bad');status.textContent='💀 '+n1+', והמידע אבד'}
+    }
+    disks.forEach(function(g){
+      function toggle(){var i=+g.getAttribute('data-i');
+        if(failed.has(i)){failed.delete(i);g.classList.remove('dead')}else{failed.add(i);g.classList.add('dead')}
+        update()}
+      g.addEventListener('click',toggle);
+      g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+    });
+    reset.addEventListener('click',function(){failed.clear();disks.forEach(function(g){g.classList.remove('dead')});update()});
+  }
+  document.querySelectorAll('svg[data-raid]').forEach(build);
+
+  // copy buttons
+  document.querySelectorAll('.code').forEach(function(box){
+    var btn=document.createElement('button');btn.type='button';btn.className='copy';btn.textContent='העתק';
+    btn.addEventListener('click',function(){
+      var txt=box.querySelector('pre').innerText;
+      try{navigator.clipboard.writeText(txt).then(function(){btn.textContent='הועתק ✓';setTimeout(function(){btn.textContent='העתק'},1500)})}catch(e){}
+    });
+    box.appendChild(btn);
+  });
+})();
+</script>
+</body>
+</html>
